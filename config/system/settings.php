@@ -2,26 +2,21 @@
 return [
     'BE' => [
         'debug' => false,
-        'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$ZnBOa1pVZHFNUGVBNXZZMA$/+HNGz6ZTJwz3GuWJWZdV94cc+9CFgIMw63FICw0wJU',
+        'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$aVZ4S0tBUkJGb3IwTHozcQ$1e9mt8Rxp3whinE0K0ss7TSriQPwTAnpxy8lpz7g6LY',
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
         ],
+        'passwordPolicy' => 'simple',
     ],
     'DB' => [
         'Connections' => [
             'Default' => [
                 'charset' => 'utf8mb4',
-                'dbname' => 'db',
-                'driver' => 'mysqli',
-                'host' => 'db',
-                'password' => 'db',
-                'port' => 3306,
                 'tableoptions' => [
                     'charset' => 'utf8mb4',
                     'collate' => 'utf8mb4_unicode_ci',
                 ],
-                'user' => 'db',
             ],
         ],
     ],
@@ -72,17 +67,21 @@ return [
         ],
     ],
     'FE' => [
+        'cacheHash' => [
+            'enforceValidation' => true,
+        ],
         'debug' => false,
+        'disableNoCacheParameter' => true,
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
         ],
     ],
     'GFX' => [
-        'processor' => 'GraphicsMagick',
+        'processor' => 'ImageMagick',
         'processor_allowTemporaryMasksAsPng' => false,
-        'processor_colorspace' => 'RGB',
-        'processor_effects' => false,
+        'processor_colorspace' => 'sRGB',
+        'processor_effects' => true,
         'processor_enabled' => true,
         'processor_path' => '/usr/bin/',
     ],
@@ -103,13 +102,14 @@ return [
     ],
     'MAIL' => [
         'transport' => 'sendmail',
-        'transport_sendmail_command' => '/usr/local/bin/mailhog sendmail test@example.org --smtp-addr 127.0.0.1:1025',
+        'transport_sendmail_command' => '/usr/sbin/sendmail_r -t -i',
         'transport_smtp_encrypt' => '',
         'transport_smtp_password' => '',
         'transport_smtp_server' => '',
         'transport_smtp_username' => '',
     ],
     'SYS' => [
+        'UTF8filesystem' => true,
         'caching' => [
             'cacheConfigurations' => [
                 'hash' => [
@@ -137,12 +137,15 @@ return [
         ],
         'devIPmask' => '',
         'displayErrors' => 0,
-        'encryptionKey' => '1781ef9eb47cc615ffc93afbe8c156246c07fea63fa6ea3ff9cfbb4183b65302f6ae617f9db22f777bcf1cd403339d51',
+        'encryptionKey' => 'e82e92a7dc0d6ae771f6856e46794d20fbe0832206be26e3ea24314d5decfe1626be369fe10fdb03d20f8c8d6dbc5fbf',
         'exceptionalErrors' => 4096,
+        'features' => [
+            'security.backend.enforceContentSecurityPolicy' => true,
+            'security.usePasswordPolicyForFrontendUsers' => true,
+        ],
         'sitename' => 'Servir Ensemble',
         'systemMaintainers' => [
             1,
         ],
-        'trustedHostsPattern' => '.*.*',
     ],
 ];

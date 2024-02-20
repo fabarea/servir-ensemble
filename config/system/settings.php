@@ -88,6 +88,8 @@ return [
         ],
     ],
     'MAIL' => [
+        'defaultMailFromAddress' => 'contact@servir-ensemble.org',
+        'defaultMailFromName' => 'Association Servir Ensemble',
         'transport' => 'sendmail',
         'transport_sendmail_command' => '/usr/sbin/sendmail_r -t -i',
         'transport_smtp_encrypt' => '',

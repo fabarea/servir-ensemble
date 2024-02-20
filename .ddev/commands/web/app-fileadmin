@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ## #ddev-generated
-## Description: Download fileadmin files
+## Description: Pull files from the remote server
 ## Usage: app:fileadmin
 ## Example: "ddev app:fileadmin"
 

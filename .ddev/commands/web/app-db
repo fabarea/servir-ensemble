@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ## #ddev-generated
-## Description: Sync the database from the remote server
+## Description: Pull database from the remote server
 ## Usage: app:db
 ## Example: "ddev app:db"
 

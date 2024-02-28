@@ -135,6 +135,8 @@ return [
         'sitename' => 'Servir Ensemble',
         'systemMaintainers' => [
             1,
+            4,
+            5,
         ],
     ],
 ];
